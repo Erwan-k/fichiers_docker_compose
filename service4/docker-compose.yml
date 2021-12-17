@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+    conteneur3:
+      image: erwankerbrat/cours_cloud3
+      ports:
+        - "1031:5000"
+      environment:
+        DATABASE_URL: "mysql://root:rootpassword@db:3306/db_test"
+    db:
+      image: erwankerbrat/copie_mysql
+      volumes:
+       - ./data-init:/docker-entrypoint-initdb.d  
+      environment:
+          MYSQL_ROOT_PASSWORD: rootpassword
+          MYSQL_DATABASE: db_test
+          MYSQL_USER: username
+          MYSQL_PASSWORD: password
+    dbadmin:  
+      image: erwankerbrat/copie_phpmyadmin
+      environment:
+          PMA_ARBITRARY: 1
+          PMA_HOST: db
+          PMA_USER: root 
+          PMA_PASSWORD: rootpassword 
+      ports:
+        - "1032:80" 

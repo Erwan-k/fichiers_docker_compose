@@ -1,0 +1,6 @@
+version: '3.3'
+services:
+    conteneur2:
+      image: erwankerbrat/cours_cloud1
+      ports:
+        - "1011:5000"

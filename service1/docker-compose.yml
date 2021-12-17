@@ -1,0 +1,6 @@
+version: '3.3'
+services:
+    conteneur1:
+      image: erwankerbrat/portefolio_react_app
+      ports:
+        - "1001:3000"
